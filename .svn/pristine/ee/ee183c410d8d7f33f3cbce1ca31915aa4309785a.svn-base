@@ -1,0 +1,13 @@
+package cn.zzpigt.service.impl;
+
+import cn.zzpigt.service.UserService;
+
+public class UserServiceImpl implements UserService {
+
+	@Override
+	public String getCode() {
+		
+		return null;
+	}
+
+}

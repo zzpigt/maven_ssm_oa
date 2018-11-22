@@ -1,0 +1,40 @@
+package cn.zzpigt.controller;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import cn.zzpigt.bean.QueryVo;
+import cn.zzpigt.service.UserService;
+
+@Controller
+@RequestMapping("user")
+public class UserController {
+	
+	@Autowired
+	private UserService us;
+	
+	@RequestMapping("/login.action")
+	public String login(QueryVo vo, Model model){
+		try {
+			//去业务逻辑层判断数据是否正确 
+			us.checkUserAndCode(vo);
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("errorMeg", e.toString());
+		}
+		return "redirect:/login.jsp";
+	}
+
+	@RequestMapping("/checkCode.action")
+	public String checkCode(HttpSession session){
+		//在业务逻辑层拿到随机的Code
+		String code = us.getCode();
+		session.setAttribute("code", code);
+		return "/login.jsp";
+	}
+	
+}

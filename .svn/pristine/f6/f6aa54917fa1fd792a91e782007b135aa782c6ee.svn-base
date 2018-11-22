@@ -1,0 +1,7 @@
+package cn.zzpigt.service;
+
+public interface UserService {
+
+	String getCode();
+
+}

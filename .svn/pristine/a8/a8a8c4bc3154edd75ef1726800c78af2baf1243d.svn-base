@@ -1,0 +1,12 @@
+package cn.zzpigt.service;
+
+import cn.zzpigt.bean.QueryVo;
+import cn.zzpigt.bean.User;
+
+public interface UserService {
+
+	String getCode();
+
+	User checkUserAndCode(QueryVo vo) throws Exception;
+
+}
