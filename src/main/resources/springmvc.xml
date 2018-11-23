@@ -14,7 +14,19 @@
 	<!-- 注解驱动 -->
 	<mvc:annotation-driven />
 
-
+	<!-- 配置拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<!-- 配置具体的拦截器 -->
+			<bean class="cn.zzpigt.interceptor.LoginInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<!-- 配置具体的拦截器 -->
+			<bean class="cn.zzpigt.interceptor.PermissionInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 
 

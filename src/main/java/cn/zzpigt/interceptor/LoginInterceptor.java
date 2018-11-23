@@ -18,11 +18,11 @@ public class LoginInterceptor implements HandlerInterceptor{
 		User user = (User) request.getSession().getAttribute("user");
 		
 		if(user != null || request.getRequestURI().contains("login") || request.getRequestURI().contains("checkCode")){
-			System.out.println("登入过了，可以放行！！!");
+			System.out.println("登入通过：" + request.getRequestURI());
 			return true;
 		}else{
-			System.out.println("没有登入，或者非法访问其它页面");
-			response.sendRedirect(request.getContextPath() + "/user/login.action");
+			System.out.println("登入拦截了：" + request.getRequestURI());
+			response.sendRedirect(request.getContextPath() + "/User/login.action");
 			return false;
 		}
 		
